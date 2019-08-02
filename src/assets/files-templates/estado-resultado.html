@@ -1,0 +1,353 @@
+
+<html lang="en">
+<head>
+    <title>Reporte PYG</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{{options.libreria}}"></script>
+
+    <script type="text/javascript">
+
+        var myChart1 = echarts.init(document.getElementById('main1'));
+        var myChart2 = echarts.init(document.getElementById('main2'));
+        var myChart3 = echarts.init(document.getElementById('main3'));
+
+        var option1 = {
+            title: {
+                text: 'Control de gastos',
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                bottom: 'bottom',
+                data: ['UTILIDAD 2018', 'UTILIDAD 2019']
+            },
+            xAxis: {
+                type: 'category',
+                data: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: 'UTILIDAD 2018',
+                    type: 'line',
+                    data: [0,-1,2,2,-1],
+                    color: ['skyblue'],
+                    
+                },
+                {
+                    name: 'UTILIDAD 2019',
+                    type: 'line',
+                    data: [0,1,2,3,4,5],
+                    color: ['darkblue'],
+                }
+            ]
+        };
+
+        var option2 = {
+           
+            title: {
+                text: 'Control de gastos',
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer : {            
+                    type : 'shadow'     
+                }
+            },
+            legend: {
+                itemGap: 0,
+                itemWidth : 10,
+                orient: 'horizontal',
+                bottom: 'bottom',
+                data: ['INGRESOS OPERACIONALES', 'COSTOS DE VENTAS'],
+            },
+            xAxis: {
+                type: 'category',
+                data: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                axisTick: {
+                    alignWithLabel: true
+                }
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    color: ['darkblue'],
+                    name: 'INGRESOS OPERACIONALES',
+                    type: 'bar',
+                    barWidth: '10%',
+                    data: [0,0,0,0,0,200],
+                    
+                },
+                {
+                    color: ['skyblue'],
+                    name: 'COSTOS DE VENTAS',
+                    type: 'bar',
+                    barWidth: '10%',
+                    data: [0,100,0,0,0,0],
+                    
+                }
+            ]
+        };
+
+
+        var option3 = {
+            title: {
+                text: 'Ingresos vs Egresos',
+                x: 'center'
+            },
+            legend: {
+                itemGap: 0,
+                itemWidth : 15,
+                orient: 'horizontal',
+                bottom: 'bottom',
+                data: ['NO OPERACIONALES 2018', 'ADMINISTRATIVOS 2018', 'VENTA 2018']
+            },
+            tooltip: {},
+            dataset: {
+                dimensions: ['month', 'NO OPERACIONALES 2018', 'ADMINISTRATIVOS 2018', 'VENTA 2018'],
+                source: [
+                    {month: 'Ene', 'NO OPERACIONALES 2018': 2.3, 'ADMINISTRATIVOS 2018': 1.8, 'VENTA 2018': 0.7},
+                    {month: 'Feb', 'NO OPERACIONALES 2018': 1.1, 'ADMINISTRATIVOS 2018': 3.4, 'VENTA 2018': 0.1},
+                    {month: 'Mar', 'NO OPERACIONALES 2018': 2.4, 'ADMINISTRATIVOS 2018': 1.2, 'VENTA 2018': 2.5},
+                    {month: 'Abr', 'NO OPERACIONALES 2018': 0.4, 'ADMINISTRATIVOS 2018': 1.9, 'VENTA 2018': 2.1},
+                    {month: 'May', 'NO OPERACIONALES 2018': 0.4, 'ADMINISTRATIVOS 2018': 0.9, 'VENTA 2018': 1.1},
+                    {month: 'Jun', 'NO OPERACIONALES 2018': 1.4, 'ADMINISTRATIVOS 2018': 0.9, 'VENTA 2018': 4.1}
+                ]
+            },
+            xAxis: {type: 'category'},
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {type: 'bar', color: ['darkblue'], barWidth: '10%'},
+                {type: 'bar',  color: ['skyblue'], barWidth: '10%'},
+                {type: 'bar', color: ['red'], barWidth: '10%'  }
+            ]
+        };
+
+        myChart1.setOption(option1);
+        myChart2.setOption(option2);
+        myChart3.setOption(option3);
+
+        document.getElementById('info').setAttribute("style", "content: Fecha de impresión" + new Date());
+    </script>
+</head>
+<body style="padding:1rem; border: 1px solid #1B365D;background-color: #fafafa;text-align: center;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+    <style>
+        tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        @media print {
+            @page {
+                size: letter portrait;
+                margin: 0;
+            }
+        }
+
+        table {
+            page-break-before: center;
+        }
+    </style>
+
+    <style media="print">
+        table>thead {
+            background: skyblue;
+        }
+    </style>
+
+    <header>
+
+        <div id="info-principal">
+            <h3 id="pdf-title"
+                style="color:#1B365D;font-weight: bold; position:absolute; float: left; margin-top:30px; left:60px; visibility:visible; z-index:1">
+                REPORTE PYG
+            </h3>
+
+            <img id="img-logo" src="{{options.logo}}" alt="imagen-logo"
+                style="position:absolute; margin-right:-10px; margin-top:30px; right:50px; visibility:visible; z-index:1; width: 200px">
+        </div>
+
+        <div id="info-secundaria">
+
+            <h5 id="pdf-fecha-corte-title"
+                style="font-weight: normal;color:#1B365D; position:absolute; float: left; margin-top:60px; left:60px; visibility:visible; z-index:1">
+                Fecha inicial: {{data.fechaCorteInicialTxt}}
+            </h5>
+
+            <h5 id="pdf-fecha-corte-title"
+                style="font-weight: normal;color:#1B365D; position:absolute; float: left; margin-top:80px; left:60px; visibility:visible; z-index:1">
+                Fecha final: 39-06-2019 23:59:59
+            </h5>
+
+            <h5 id="pdf-nit"
+                style="color:#1B365D;font-weight: bold;position:absolute; margin-top:30px; right:270px; visibility:visible; z-index:1">
+                Nit: 800.098.622-4
+            </h5>
+
+            <h5 id="pdf-usuario"
+                style="color:#1B365D;font-weight: bold;position:absolute; margin-top:60px; right:270px; visibility:visible; z-index:1">
+                Usuario: JORDAN OROZCO
+            </h5>
+        </div>
+        <img src="{{options.cabecera}}" alt="imagen-cabecera" style="width: 100%; height: 120px;">
+    </header>
+
+    <div style="margin-top: 1%">
+        <div style="width: 33%; float: left">
+            <div id="main1" style="width: 270px;height:300px"></div>
+            <br>
+        </div>
+        <div style="width: 34%; float: left">
+            <div id="main2" style="width: 270px;height:300px"></div>
+            <br>
+        </div>
+        <div style="width: 33%; float: left">
+            <div id="main3" style="width: 270px;height:300px"></div>
+            <br>
+            <br>    
+        </div> 
+    </div>
+
+    <table width="100%" cellspacing="0" cellpadding="0"
+        style="text-align: left;border: 0; font-style: normal; color: black">
+        <thead style="background-color: skyblue">
+            <th width="20%" style="color: white" >CODIGO</th>
+            <th width="50%" style="color: white" >NOMBRE</th>
+            <th width="30%" style="text-align: right;color: white">SALDO</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Activo</td>
+                <td style="text-align: right">3,548,144,848.17</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Disponible</td>
+                <td style="text-align: right">1,520,134,410.91</td>
+            </tr>
+            <tr>
+                <td>1105</td>
+                <td>Caja</td>
+                <td style="text-align: right">75,614,958.78</td>
+            </tr>
+            <tr>
+                <td>110501</td>
+                <td>Por borrar 1</td>
+                <td style="text-align: right">100,000.00</td>
+            </tr>
+            <tr>
+                <td>110502</td>
+                <td>Por borrar 2</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>110503</td>
+                <td>Por borrar 3</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>110505</td>
+                <td>Caja general</td>
+                <td style="text-align: right">76,614,958.78</td>
+            </tr>
+            <tr>
+                <td>110510</td>
+                <td>Caja menor</td>
+                <td style="text-align: right">900,000.00</td>
+            </tr>
+            <tr>
+                <td>110511</td>
+                <td>Cuenta puente</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>1110</td>
+                <td>Bancos</td>
+                <td style="text-align: right">1,471,161,741.66</td>
+            </tr>
+            <tr>
+                <td>111003</td>
+                <td>Banco tequendama</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>111005</td>
+                <td>Soregiro bancario ch transito</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>111008</td>
+                <td>Banco santander</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>111010</td>
+                <td>Banco superior</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>111005</td>
+                <td>Soregiro bancario ch transito</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>111008</td>
+                <td>Banco santander</td>
+                <td style="text-align: right">0.00</td>
+            </tr>
+            <tr>
+                <td>111010</td>
+                <td>Banco superior</td>
+                <td style="text-align: right">1,555,591</td>
+            </tr>
+            <tr>
+                <td>111005</td>
+                <td>Soregiro bancario ch transito</td>
+                <td style="text-align: right">1,520,134,410.91</td>
+            </tr>
+            <tr>
+                <td>111008</td>
+                <td>Banco santander</td>
+                <td style="text-align: right">1,520,134,410.91</td>
+            </tr>
+            <tr>
+                <td>111010</td>
+                <td>Banco superior</td>
+                <td style="text-align: right">1,455,533.00</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <footer style="bottom: 0px;position: fixed;width: 100%">
+
+        <div style="float: left">
+            <h5 style="color: rgb(54, 54, 54)">Impreso: 18-07-2019 14:07:84 &nbsp;&nbsp;&nbsp;&nbsp; por: Jordan Orozco
+            </h5>
+        </div>
+
+        <div style="float: right">
+            <img id="img-footer" src="{{options.logo}}" alt="imagen-logo-footer"
+                style="width: 100px;margin-top:15px;margin-left:-180px !important">
+        </div>
+
+        <div style="float: right">
+            <h5 style="color: rgb(54, 54, 54);margin-left:-404px !important">Pagina: 1 de n</h5>
+        </div>
+    </footer>
+
+    
+</body>
+
+</html>
