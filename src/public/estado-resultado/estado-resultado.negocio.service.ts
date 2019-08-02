@@ -13,7 +13,7 @@ export class EstadoResultadoNegocioService {
 
     public async filtrarEstadoResultado(req: EstadoResultadoDto){
         const data =  this._jsonURL;
-        return this.reporteService.donwloadPdf(data, TypePdf.estado_resultado);
+        return this.reporteService.donwloadPdf(req, TypePdf.estado_resultado);
     }
     
 }

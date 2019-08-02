@@ -1,8 +1,8 @@
 export class EstadoResultadoDto {
-    readonly nivelId: string;
-    readonly fechaInicial: Date;
-    readonly fechaFinal: Date;
-    readonly expresar: string;
-    readonly centroId: string;
-    readonly filtro: string;
+    readonly nivelList: string;
+    public fechaCorteInicialTxt: string;
+    public fechaCorteFinalTxt: string;
+    readonly valorExpresadoList: string;
+    readonly centroCostosList: string;
+    readonly filtrocentroCostoTxt: string;
 }
