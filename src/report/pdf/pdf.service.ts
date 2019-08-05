@@ -30,7 +30,6 @@ export class PdfService {
             template: html,
             context: {
                 options: {
-                    
                     fecha_inicial: new Date(),
                     cabecera: this.helperService.convertImageBase64(PdfStyle.cabecera),
                     logo: this.helperService.convertImageBase64(PdfStyle.logo),
