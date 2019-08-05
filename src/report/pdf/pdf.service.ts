@@ -23,19 +23,21 @@ export class PdfService {
     }
 
     private getDocument(data: any, archivo: TypePdf){
-        const libreria  = this.helperService.readFile(this.pathLibreries, PdfStyle.libreria);
+        const libreria  = this.helperService.getFileJs(PdfStyle.libreria)
+        console.log(libreria);
         const html      = this.helperService.readFile(this.pathTemplates, archivo);
         return {
             type: 'file',
             template: html,
             context: {
                 options: {
-                    data: JSON.stringify(data),
+                    
                     fecha_inicial: new Date(),
                     cabecera: this.helperService.convertImageBase64(PdfStyle.cabecera),
                     logo: this.helperService.convertImageBase64(PdfStyle.logo),
                     libreria: libreria
                 },
+                data: data,
             },
             path: './informe-pyg.pdf'
         };

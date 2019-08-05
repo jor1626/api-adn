@@ -5,4 +5,8 @@ export class EstadoResultadoDto {
     readonly valorExpresadoList: string;
     readonly centroCostosList: string;
     readonly filtrocentroCostoTxt: string;
+    readonly userGenerator: string;
 }
+
+
+

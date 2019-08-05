@@ -30,4 +30,9 @@ export class HelperService {
         let urlImage = `${this.fileImg}${archivo}`;
         return base64Img.base64Sync(urlImage);
     }
+
+    public getFileJs(archivo: string){
+        let urlImage = `${this.fileLibreries}${archivo}`;
+        return urlImage;
+    }
 }
