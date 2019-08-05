@@ -23,8 +23,7 @@ export class PdfService {
     }
 
     private getDocument(data: any, archivo: TypePdf){
-        const libreria  = this.helperService.getFileJs(PdfStyle.libreria)
-        console.log(libreria);
+        const libreria  = this.helperService.getFileJs(PdfStyle.libreria);
         const html      = this.helperService.readFile(this.pathTemplates, archivo);
         return {
             type: 'file',

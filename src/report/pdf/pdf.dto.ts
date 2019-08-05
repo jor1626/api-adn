@@ -5,5 +5,6 @@ export enum TypePdf {
 export enum PdfStyle {
     cabecera =  'cabecera.jpg',
     logo =  'haytic-logo.png',
-    libreria =  'echarts.js'
+    libreria =  'echarts.js',
+    init =  'init.js'
 }

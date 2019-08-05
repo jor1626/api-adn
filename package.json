@@ -22,12 +22,17 @@
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
+    "@nestjs/swagger": "^3.1.0",
     "base64-img": "^1.0.4",
     "dynamic-html-pdf": "^1.0.1",
+    "echarts": "^4.2.1",
+    "handlebars": "^4.1.2",
     "nodemon": "^1.19.1",
+    "puppeteer": "^1.19.0",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.3.3",
+    "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
     "@nestjs/testing": "6.1.1",

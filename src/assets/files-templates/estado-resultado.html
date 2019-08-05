@@ -4,8 +4,7 @@
     <title>Reporte PYG</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.js"></script>
-
+    <scripts src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.js"></script>
     <script>
 
         var myChart1 = echarts.init(document.getElementById('main1'));
@@ -51,7 +50,7 @@
         };
 
         var option2 = {
-           
+            
             title: {
                 text: 'Control de gastos',
                 x: 'center'
@@ -99,7 +98,6 @@
             ]
         };
 
-
         var option3 = {
             title: {
                 text: 'Ingresos vs Egresos',
@@ -139,7 +137,6 @@
         myChart2.setOption(option2);
         myChart3.setOption(option3);
 
-        document.getElementById('info').setAttribute("style", "content: Fecha de impresión" + new Date());
     </script>
 </head>
 <body style="padding:1rem; border: 1px solid #1B365D;background-color: #fafafa;text-align: center;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
@@ -345,9 +342,10 @@
         <div style="float: right">
             <h5 style="color: rgb(54, 54, 54);margin-left:-404px !important">Pagina: 1 de n</h5>
         </div>
+
+        <div id="indo"></div>
     </footer>
 
-    
 </body>
 
 </html>
