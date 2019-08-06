@@ -8,26 +8,19 @@ import { map } from "rxjs/operators";
 @Injectable()
 export class EstadoResultadoNegocioService {
 
+    private _jsonURL = 'http://localhost:3000/js/estado-resultado.json';
+
     constructor(
-        private readonly httpService: HttpService,
+        private httpService: HttpService,   
         private readonly reporteService: PdfService
     ){}
 
-    public async listar(){
-        return await this.httpService.post('/assets/js/estado-resultado.json').subscribe(response => response);
+    async listar(): Promise<any>{
+        return await this.httpService.get(this._jsonURL).toPromise().then(data => data.data);
     }
 
-    public async filtrar(req: EstadoResultadoDto){
-        return await this.httpService.post('/assets/js/estado-resultado.json').pipe(
-            map(response => {
-                const array: Array<EstadoResultadoDto> = response.data;
-                array.filter(array => 
-                    req.centroCostosList == array.centroCostosList  && req.fechaCorteFinalTxt  >= array.fechaCorteFinalTxt  &&
-                    req.fechaCorteFinalTxt <= array.fechaCorteFinalTxt && req.nivelList === array.nivelList &&
-                    req.valorExpresadoList === array.valorExpresadoList
-                )
-            }
-        ));
+    public async filtrar(req: EstadoResultadoDto): Promise<any> {
+        return await this.httpService.get(this._jsonURL).toPromise().then(data => data.data);
     }
 
     public async reporte(req: EstadoResultadoDto){

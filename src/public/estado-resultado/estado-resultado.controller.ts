@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Response, HttpStatus, Get } from '@nestjs/common';
 import { EstadoResultadoDto } from './dto/estado-resultado.dto';
 import { EstadoResultadoService } from './estado-resultado.service';
-import { ApiUseTags, ApiResponse, ApiForbiddenResponse, ApiCreatedResponse } from '@nestjs/swagger';
+import { ApiUseTags } from '@nestjs/swagger';
 
 @ApiUseTags('estado-resultado')
 @Controller('api/estado-resultado')

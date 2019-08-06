@@ -6,5 +6,8 @@ export class EnviromentService {
     
     constructor(){}
 
+    get urlBase(){
+        return 'http://localhost:3000';
+    }
    
 }
