@@ -9,13 +9,29 @@ export class EstadoResultadoController {
 
     constructor(private estadoResultadoService: EstadoResultadoService){}
 
-    @Post()
-    @ApiCreatedResponse({ description: 'The record has been successfully created.'})
-    @ApiForbiddenResponse({ description: 'Forbidden.'})
-    async filtrar(@Response() res, @Body() request?: EstadoResultadoDto) {
+    @Get()
+    async listar(@Response() res){
 
-        const data = await this.estadoResultadoService.consultar(request);
+        const data = await this.estadoResultadoService.listar();
 
         return res.status(HttpStatus.OK).json(data);
     }
+
+    @Post()
+    async filtrar(@Response() res, @Body() request?: EstadoResultadoDto){
+
+        const data = await this.estadoResultadoService.filtrar(request);
+
+        return res.status(HttpStatus.OK).json(data);
+    }
+
+    @Post()
+    async reporte(@Response() res, @Body() request?: EstadoResultadoDto){
+
+        const data = await this.estadoResultadoService.reporte(request);
+
+        return res.status(HttpStatus.OK).json(data);
+    }
+
+
 }

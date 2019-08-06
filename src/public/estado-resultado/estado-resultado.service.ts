@@ -7,8 +7,15 @@ export class EstadoResultadoService {
 
     constructor(private ngEstadoResultado: EstadoResultadoNegocioService){}
 
-    public async consultar(req: EstadoResultadoDto){
-        let data = await this.ngEstadoResultado.filtrarEstadoResultado(req).then(data => data);
-        return data;
+    public async listar(){
+        return await this.ngEstadoResultado.listar();
+    }
+
+    public async filtrar(req: EstadoResultadoDto){
+        return await this.ngEstadoResultado.filtrar(req);
+    }
+
+    public async reporte(req: EstadoResultadoDto) {
+        return await this.ngEstadoResultado.reporte(req);
     }
 }

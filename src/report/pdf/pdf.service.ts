@@ -19,7 +19,8 @@ export class PdfService {
     public async donwloadPdf(data: any, archivo: TypePdf){
         const document  = await this.getDocument(data, archivo);
         const options   = await this.pdfOptions();
-        return this.createPdf(document, options);
+        const pdf       = this.createPdf(document, options);
+        return  data;
     }
 
     private getDocument(data: any, archivo: TypePdf){
